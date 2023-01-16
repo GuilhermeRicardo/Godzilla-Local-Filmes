@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>Login</h1>
+<div mat-dialog-content>
+<form role="group" [formGroup]="loginForm">
+    <mat-form-field floatLabel="always">
+        <input formControlName="email" matInput placeholder="E-Mail">
+      </mat-form-field>
+      <mat-form-field floatLabel="always">
+        <input formControlName="senha" matInput placeholder="Senha">
+      </mat-form-field>
+</form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>No</button>
+  <button mat-button mat-dialog-close cdkFocusInitial>Ok</button>
+</div>
