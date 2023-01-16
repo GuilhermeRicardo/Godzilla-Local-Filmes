@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="grica"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-01-16 01:14:14 "/>
+        <attribute name="created" value="Z3JpY2E7REVTS1RPUC1TUUI3TVNLOzIwMjMtMDEtMTY7IjEyOjQ5OjQ0ICI7MjgxNQ=="/>
+        <attribute name="edited" value="Z3JpY2E7REVTS1RPUC1TUUI3TVNLOzIwMjMtMDEtMTY7IjAxOjE0OjE0ICI7MTsyOTEw"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="notaA, notaB, notaC, media, notaNecessaria" type="Integer" array="False" size=""/>
+            <input variable="notaA"/>
+            <input variable="notaB"/>
+            <input variable="notaC"/>
+            <assign variable="media" expression="(notaA + notaB + notaC) / 3"/>
+            <if expression="media &gt;= 7">
+                <then>
+                    <output expression="&quot;Aluno aprovado&quot;" newline="True"/>
+                </then>
+                <else>
+                    <assign variable="notaNecessaria" expression="7 - media"/>
+                    <if expression="media &lt;= 4.9">
+                        <then>
+                            <output expression="&quot;Aluno em recupera&#231;&#227;o, necessario &quot; &amp; notaNecessaria &amp; &quot; pontos para aprova&#231;&#227;o&quot;" newline="True"/>
+                        </then>
+                        <else>
+                            <output expression="&quot;Aluno em prova final, necessario &quot; &amp; notaNecessaria &amp; &quot; pontos para aprova&#231;&#227;o&quot;" newline="True"/>
+                        </else>
+                    </if>
+                </else>
+            </if>
+        </body>
+    </function>
+</flowgorithm>
