@@ -9,6 +9,10 @@
                 <mat-icon>key</mat-icon>
                 Login
             </button>
+            <button mat-button (click)="newUserDialog()">
+                <mat-icon>add</mat-icon>
+                Criar novo Usuario  
+            </button>
         </div>
         <div *ngIf="verifiedUser" class="login">
             <p>Olá, {{user.userName}}!</p>
@@ -24,7 +28,7 @@
             </mat-list-item>
             <mat-list-item>
                 <button mat-button (click)="openNewRental()" >
-                    <mat-icon>add</mat-icon>
+                    <mat-icon>add_task</mat-icon>
                     Nova locação
                 </button>
             </mat-list-item>

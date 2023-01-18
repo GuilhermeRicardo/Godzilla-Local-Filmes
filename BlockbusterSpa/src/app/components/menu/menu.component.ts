@@ -4,6 +4,7 @@ import { RentTableComponent } from './rent-table/rent-table.component';
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from './login/login.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -15,22 +16,16 @@ export class MenuComponent {
   verifiedUser!: boolean;
   user!: authResult;
 
-  constructor (
-
-    
-    public dialog:MatDialog
+  constructor (    
+    public dialog:MatDialog,
+    public snackBar: MatSnackBar
   ) { }
 
   loginDialog() {
 
     const dialogRef = this.dialog.open(LoginComponent, {
       width: '250px',
-      disableClose: true,
-      data: {
-        email:'',
-        senha:''
-      }
-
+      disableClose: true
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -39,7 +34,29 @@ export class MenuComponent {
 
       if (this.user.result = true){
         this.verifiedUser = true;
+        this.snackBar.open('Realizado login como usuário '+ this.user.userName + '!', '',{
+          duration: 3000
+        })
       }
+
+      console.log(this.user)
+
+    });
+
+  }
+
+  newUserDialog() {
+
+    const dialogRef = this.dialog.open(LoginComponent, {
+      width: '250px',
+      disableClose: true,
+      data: {
+        newUser: true
+      }
+
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
 
       console.log(this.user)
 

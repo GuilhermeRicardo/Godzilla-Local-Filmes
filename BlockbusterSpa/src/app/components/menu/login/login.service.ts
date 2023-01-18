@@ -1,3 +1,4 @@
+import { userDTO } from './../../../Models/DTO/userDTO';
 import { authResult } from '../../../Models/DTO/authResult';
 import { users } from './../../../Models/users';
 import { HttpClient } from '@angular/common/http';
@@ -14,6 +15,10 @@ constructor(private http: HttpClient) { }
 
 postLogin(form: users): Observable<authResult> {
   return this.http.post<authResult>(`${this.LoginUrl}login`,form)
+}
+
+postNewUser(form: userDTO): Observable<authResult> {
+  return this.http.post<authResult>(`${this.LoginUrl}register`,form)
 }
 
 getSearch(keyword: string): Observable<users[]> {
