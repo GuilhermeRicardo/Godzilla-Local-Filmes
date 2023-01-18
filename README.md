@@ -1,7 +1,7 @@
 # Godzilla Local Filmes
 
 
-## Frond-End: Angular + Angular Material Library:
+## Frond-End: Angular + Angular Material Library.
     
 Interface contruida utilizando Angular 15 + Angular Materiais.
 
@@ -10,7 +10,7 @@ Ações de criação de nova locação de filme, listagem de filmes locados e ex
 
 Para inilizar a interface em ambiente local deve ser utilizado o comando '*ng* serve' dentro do repositório '*BlockbusterSpa/*'
  
-## Back-End: API .Net 6.0 + Entity Framework & JWT Bearer Authentication + SQL Server:
+## Back-End: API .Net 6.0 + Entity Framework & JWT Bearer Authentication + SQL Server.
 
 ###### *Importante: Para utilização do Backend para validação de endpoint será necessário o serviço SQL Server 2019 para criação de um banco de dados local utilizando o comando dotnet ef database update.*
  
