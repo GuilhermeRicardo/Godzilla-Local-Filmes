@@ -4,11 +4,14 @@
 ### Frond-End: Angular + Angular Material Library:
 Interface contruida utilizando Angular 15 + Angular Materiais, ações de criação de nova locação de filme e listagem de filmes locados serão validadas via Jwt Token armazeda no LocalStorage e serão carregadas em cada requisição utilizando Angular Interceptor.
 
+###### Para inilizar a interface em ambiente local deve ser utilizado o comando '* ng* serve' dentro do repositório.
+ 
+
 ### Back-End: API .Net 6.0 + Entity Framework & JWT Bearer Authentication + SQL Server:
 
 ###### *Importante: Para utilização do Backend para validação de endpoint será necessário o serviço SQL Server 2019 para criação de um banco de dados local utilizando o comando dotnet ef database update.*
 
-Para inicializar a API deve-se utilizar o comando '*dotnet* run' dentro do repositorio '*BlockbusterApi/*'
+Para inicializar a API deve-se utilizar o comando '*dotnet* run' dentro do repositório '*BlockbusterApi/*'
 
 A API estará disponivel a partir do endpoint *'https://localhost:7288;'*, para testes utilizando o SwaggerAPI, utilizar o link: 'https://localhost:7288/swagger/index.html'
 
