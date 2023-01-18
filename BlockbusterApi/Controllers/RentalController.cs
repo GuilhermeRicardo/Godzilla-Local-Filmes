@@ -85,15 +85,6 @@ namespace BlockbusterApi.Controllers
 
             }
 
-            //    return BadRequest(new AuthResult()
-            //    {
-            //        Errors = new List<string>()
-            //        {
-            //            "Contagem: " + count + ", Estoque: " + availability.estoque
-            //        }
-            //    });
-            //}
-
             try
             {
                 await context.Rental.AddAsync(rent);

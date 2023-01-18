@@ -24,11 +24,9 @@ namespace BlockbusterApi.Controllers
         public AuthenticationController(
             UserManager<IdentityUser> userManager,
             IConfiguration configuration)
-            //JwtConfig jwtConfig)
         {
             _userManager = userManager;
             _configuration = configuration;
-            //_jwtConfig = jwtConfig;
         }
 
         [HttpPost]
@@ -102,7 +100,7 @@ namespace BlockbusterApi.Controllers
                         Result = false,
                         Errors = new List<string>()
                         {
-                            "Carga Invalida 1"
+                            "Carga Invalida"
                         }
                     });
                 }
@@ -136,7 +134,7 @@ namespace BlockbusterApi.Controllers
                 Result = false,
                 Errors = new List<string>()
                 {
-                    "Carga Invalido 2"
+                    "Carga Invalido"
                 }
             });
         }

@@ -18,19 +18,6 @@ namespace BlockbusterApi.Controllers
             [FromServices] AppDataContext context)
         {
 
-
-
-            //var movies = await (from mo in context.Movies
-            //                    join re in context.Rental on mo.Id equals re.MovieId
-            //                    where mo.Id == re.MovieId
-            //                    select new
-            //                    {
-            //                        Id = mo.Id,
-            //                        Titulo = mo.titulo,
-            //                        Diretor = mo.diretor,
-            //                        estoque = mo.estoque,                                        
-            //                    })
-
             var movies = await context
                 .Movies
                 .AsNoTracking()
