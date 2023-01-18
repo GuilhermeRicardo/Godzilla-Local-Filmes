@@ -37,7 +37,7 @@ utilizando Body em JSON em formato:
   "password": "Passw0rd!"
 }
 
-#### Login: *'https://localhost:7288/api/Authentication/login'*
+##### Login: *'https://localhost:7288/api/Authentication/login'*
 
 Para o login, deve ser fornecido Body em JSON no seguinte formato:
 
@@ -48,14 +48,17 @@ Para o login, deve ser fornecido Body em JSON no seguinte formato:
 
 ## Movie
 
-Para listagem de filmes e busca por titulo de filme utilizando palavra-chave, são disponibilizados respectivamente os endpoint:
+Para listagem de filmes, checagem de disponibilidade de filme e busca por titulo de filme utilizando palavra-chave, são disponibilizados respectivamente os endpoint:
 
-#### Listagem: *'https://localhost:7288/api/Movie/list'*
+##### Listagem: *'https://localhost:7288/api/Movie/list'*
 
 Não é necessário fornecer parâmetros.
 
-#### Busca por titulo: *'https://localhost:7288/api/Movie/search/{keyword}'*
+##### Disponibilidade: *'https://localhost:7288/api/Movie/availability/{id}'*
 
+Deverá ser informado o Id do filme que deseja ser verificada a disponibilidade para locação.
+
+##### Busca por titulo: *'https://localhost:7288/api/Movie/search/{keyword}'*
 Para busca deve ser fornecido uma *string* de palavra-chave(*keyword*) que contenha um trecho do titulo que deseja ser localizado, por exemplo:
 
 *'https://localhost:7288/api/Movie/search/2000'*
@@ -74,13 +77,13 @@ Todas as operações realizadas dentro do endpoint 'https://localhost:7288/api/R
 
 Para listagem de filmes locados, criação de um novo registro de locação e exclusão de registro de locação, serão utlizados os seguintes endpoints:
 
-#### Listagem de Locação: *'https://localhost:7288/api/Rental/list'*
+##### Listagem de Locação: *'https://localhost:7288/api/Rental/list'*
 
 Será apresentada a relação entre usuarios e filmes locados, relacionados pelos atributos:
 
 "movieId": *int* e "userId": *string*
 
-#### Registro de nova Locação: *'https://localhost:7288/api/Rental/rent'*
+##### Registro de nova Locação: *'https://localhost:7288/api/Rental/rent'*
 
 Para criação de novo registro de locação é necessário informar Body em JSON no seguite formato:
 
@@ -89,8 +92,8 @@ Para criação de novo registro de locação é necessário informar Body em JSO
   "userId": "string"
 }
 
-O userId é fornecido ao usuario por meio do Payload:data do Token como atributo "Id".
+O userId é fornecido ao usuario por meio do Payload:data do Token como atributo "Id" ou ao realizar o login como atributo "userId".
 
-#### Exclusão de registro de Locação: *'https://localhost:7288/api/Rental/delete/{id}'*
+##### Exclusão de registro de Locação: *'https://localhost:7288/api/Rental/delete/{id}'*
 
 Para exclusão de registro de locação é necessário informar o valor *Id* do respecitvo registro a ser excluido. O valor pode ser obtido na listagem de locação.
