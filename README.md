@@ -5,7 +5,12 @@ API .Net 6.0 + Entity Framework & JWT Bearer Authentication + SQL Server
 Front-End:
 Angular + Angular Material Library
 
-#### *Importante: Para utilização do Backend para validação de endpoint será necessário o serviço SQL Server 2019 para criação de um banco de dados local utilizando o comando dotnet ef database update.*
+### Angular + Angular Material Library:
+Interface contruida utilizando Angular 15 + Angular Materiais, ações de criação de nova locação de filme e listagem de filmes locados serão validadas via Jwt Token armazeda no LocalStorage e serão carregadas em cada requisição utilizando Angular Interceptor.
+
+### API .Net 6.0 + Entity Framework & JWT Bearer Authentication + SQL Server:
+
+###### *Importante: Para utilização do Backend para validação de endpoint será necessário o serviço SQL Server 2019 para criação de um banco de dados local utilizando o comando dotnet ef database update.*
 
 Para inicializar a API deve-se utilizar o comando '*dotnet* run' dentro do repositorio '*BlockbusterApi/*'
 
@@ -89,22 +94,3 @@ O userId é fornecido ao usuario por meio do Payload:data do Token como atributo
 #### Exclusão de registro de Locação: *'https://localhost:7288/api/Rental/delete/{id}'*
 
 Para exclusão de registro de locação é necessário informar o valor *Id* do respecitvo registro a ser excluido. O valor pode ser obtido na listagem de locação.
-
-
-## Previsão de construção de interface em Angular prevista para: 18/01.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
