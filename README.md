@@ -1,14 +1,10 @@
 # Godzilla Local Filmes
-Back-End:
-API .Net 6.0 + Entity Framework & JWT Bearer Authentication + SQL Server
 
-Front-End:
-Angular + Angular Material Library
 
-### Angular + Angular Material Library:
+### Frond-End: Angular + Angular Material Library:
 Interface contruida utilizando Angular 15 + Angular Materiais, ações de criação de nova locação de filme e listagem de filmes locados serão validadas via Jwt Token armazeda no LocalStorage e serão carregadas em cada requisição utilizando Angular Interceptor.
 
-### API .Net 6.0 + Entity Framework & JWT Bearer Authentication + SQL Server:
+### Back-End: API .Net 6.0 + Entity Framework & JWT Bearer Authentication + SQL Server:
 
 ###### *Importante: Para utilização do Backend para validação de endpoint será necessário o serviço SQL Server 2019 para criação de um banco de dados local utilizando o comando dotnet ef database update.*
 
