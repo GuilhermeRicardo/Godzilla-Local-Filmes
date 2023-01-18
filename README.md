@@ -1,26 +1,31 @@
 # Godzilla Local Filmes
 
 
-### Frond-End: Angular + Angular Material Library:
+## Frond-End: Angular + Angular Material Library:
     
-Interface contruida utilizando Angular 12 + Angular Materiais, ações de criação de nova locação de filme e listagem de filmes locados serão validadas via Jwt Token armazeda no LocalStorage e serão carregadas em cada requisição utilizando Angular Interceptor.
+Interface contruida utilizando Angular 12 + Angular Materiais.
 
-Para inilizar a interface em ambiente local deve ser utilizado o comando '*ng* serve' dentro do repositório.
+
+Ações de criação de nova locação de filme, listagem de filmes locados e exclusão de registro de locação, serão validadas via Jwt Token armazeda no LocalStorage e serão carregadas em cada requisição utilizando Angular Interceptor.
+
+Para inilizar a interface em ambiente local deve ser utilizado o comando '*ng* serve' dentro do repositório '*BlockbusterSpa/*'
  
-### Back-End: API .Net 6.0 + Entity Framework & JWT Bearer Authentication + SQL Server:
+## Back-End: API .Net 6.0 + Entity Framework & JWT Bearer Authentication + SQL Server:
 
 ###### *Importante: Para utilização do Backend para validação de endpoint será necessário o serviço SQL Server 2019 para criação de um banco de dados local utilizando o comando dotnet ef database update.*
  
   
 Para inicializar a API em ambiente local deve-se utilizar o comando '*dotnet* run' dentro do repositório '*BlockbusterApi/*'
 
-A API estará disponivel a partir do endpoint *'https://localhost:7288;'*, para testes utilizando o SwaggerAPI, utilizar o link: 'https://localhost:7288/swagger/index.html'
+A API estará disponivel a partir do endpoint *'https://localhost:7288;'*. 
+
+Para testes utilizando o SwaggerAPI, utilizar o link: 'https://localhost:7288/swagger/index.html'
 
 ## Authentication
 
 Os endpoints disponiveis para registro de novo usuario e login de usuario existente, são respectivamente:
 
-#### Registro: *'https://localhost:7288/api/Authentication/register'*
+##### Registro: *'https://localhost:7288/api/Authentication/register'*
 utilizando Body em JSON em formato:
 
 {
@@ -34,7 +39,7 @@ utilizando Body em JSON em formato:
 {
   "name": "usuario",
   "email": "usuario@gmail.com",
-  "password": "Passw0rd!"
+  "password": "PassW0rd! "
 }
 
 ##### Login: *'https://localhost:7288/api/Authentication/login'*
@@ -96,4 +101,4 @@ O userId é fornecido ao usuario por meio do Payload:data do Token como atributo
 
 ##### Exclusão de registro de Locação: *'https://localhost:7288/api/Rental/delete/{id}'*
 
-Para exclusão de registro de locação é necessário informar o valor *Id* do respecitvo registro a ser excluido. O valor pode ser obtido na listagem de locação.
+Para exclusão de registro de locação é necessário informar o atributo *Id* do respecitvo registro a ser excluido. O valor pode ser obtido na listagem de locação.
