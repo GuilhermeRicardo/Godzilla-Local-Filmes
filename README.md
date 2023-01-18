@@ -3,7 +3,7 @@
 
 ## Frond-End: Angular + Angular Material Library:
     
-Interface contruida utilizando Angular 12 + Angular Materiais.
+Interface contruida utilizando Angular 15 + Angular Materiais.
 
 
 Ações de criação de nova locação de filme, listagem de filmes locados e exclusão de registro de locação, serão validadas via Jwt Token armazeda no LocalStorage e serão carregadas em cada requisição utilizando Angular Interceptor.
