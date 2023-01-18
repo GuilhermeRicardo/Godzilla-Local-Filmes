@@ -3,7 +3,7 @@
 
 ### Frond-End: Angular + Angular Material Library:
     
-Interface contruida utilizando Angular 15 + Angular Materiais, ações de criação de nova locação de filme e listagem de filmes locados serão validadas via Jwt Token armazeda no LocalStorage e serão carregadas em cada requisição utilizando Angular Interceptor.
+Interface contruida utilizando Angular 12 + Angular Materiais, ações de criação de nova locação de filme e listagem de filmes locados serão validadas via Jwt Token armazeda no LocalStorage e serão carregadas em cada requisição utilizando Angular Interceptor.
 
 Para inilizar a interface em ambiente local deve ser utilizado o comando '*ng* serve' dentro do repositório.
  
