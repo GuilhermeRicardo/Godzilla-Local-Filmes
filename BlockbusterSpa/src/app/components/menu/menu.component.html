@@ -3,31 +3,35 @@
         <div class="info">
            <p>Bem vindo!</p>
         </div>
+        <div *ngIf="!verifiedUser" class="login">
+            <p>Favor realizar o login para continuar</p>
+            <button mat-button (click)="loginDialog()">
+                <mat-icon>key</mat-icon>
+                Login
+            </button>
+        </div>
+        <div *ngIf="verifiedUser" class="login">
+            <p>Olá, {{user.userName}}!</p>
+        </div>
     </div>
-    <div class="menu">
+    <div *ngIf="verifiedUser" class="menu"> 
         <mat-list>
             <mat-list-item>
-                <button mat-button (click)="loginDialog()">
-                    <mat-icon>key</mat-icon>
-                    Login
-                </button>
-            </mat-list-item>
-            <mat-list-item>
-                <button mat-button>
+                <button mat-button (click)="openRentTable()">
                     <mat-icon>search</mat-icon>
-                    Checar disponibilidade
+                    Filmes Locados
                 </button>
             </mat-list-item>
             <mat-list-item>
-                <button mat-button>
+                <button mat-button (click)="openNewRental()" >
                     <mat-icon>add</mat-icon>
                     Nova locação
                 </button>
             </mat-list-item>
             <mat-list-item>
-                <button mat-button>
-                    <mat-icon>undo</mat-icon>
-                    Devolução
+                <button mat-button (click)="logout()">
+                    <mat-icon>cancel</mat-icon>
+                    Deslogar
                 </button>
             </mat-list-item>
         </mat-list>

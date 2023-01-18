@@ -1,6 +1,7 @@
+import { LoginInterceptor } from './components/menu/login/login.interceptor';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -16,6 +17,11 @@ import { MenuComponent } from './components/menu/menu.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatListModule } from '@angular/material/list';
 import { LoginComponent } from './components/menu/login/login.component';
+import { RentTableComponent } from './components/menu/rent-table/rent-table.component';
+import { NewRentalComponent } from './components/menu/new-rental/new-rental.component';
+import {MatSelectModule} from '@angular/material/select';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
 
 
 @NgModule({
@@ -24,7 +30,9 @@ import { LoginComponent } from './components/menu/login/login.component';
     HomeComponent, 
     MovieTableComponent,
     MenuComponent,
-    LoginComponent
+    LoginComponent,
+    RentTableComponent,
+    NewRentalComponent,
    ],
   imports: [
     BrowserModule,
@@ -39,9 +47,14 @@ import { LoginComponent } from './components/menu/login/login.component';
     FormsModule,
     MatDialogModule,
     MatListModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSelectModule,
+    MatSnackBarModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS, useClass: LoginInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

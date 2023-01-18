@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlockbusterApi.Migrations
 {
     [DbContext(typeof(AppDataContext))]
-    [Migration("20230116175417_Initial")]
+    [Migration("20230118115120_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

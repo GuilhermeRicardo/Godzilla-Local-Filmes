@@ -1,15 +1,18 @@
-<h1 mat-dialog-title>Login</h1>
+<div class="dialog">
+    <h1 mat-dialog-title>Login</h1>
+</div>
 <div mat-dialog-content>
 <form role="group" [formGroup]="loginForm">
     <mat-form-field floatLabel="always">
         <input formControlName="email" matInput placeholder="E-Mail">
       </mat-form-field>
       <mat-form-field floatLabel="always">
-        <input formControlName="senha" matInput placeholder="Senha">
+        <input type="password" formControlName="senha" matInput placeholder="Senha">
       </mat-form-field>
+      <p *ngIf="invalidUser" class="invalid">Usuario Invalido!</p>
 </form>
 </div>
-<div mat-dialog-actions>
-  <button mat-button mat-dialog-close>No</button>
-  <button mat-button mat-dialog-close cdkFocusInitial>Ok</button>
+<div class="bottom" mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button (click)="tryLogin()">Ok</button>
 </div>

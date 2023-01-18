@@ -66,7 +66,7 @@ namespace BlockbusterApi.Controllers
                     var token = GenerateJwtToken(new_user);
 
                     return Ok(new AuthResult()
-                    {
+                    {   
                         Result = true,
                         Token = token
                     });
@@ -102,7 +102,7 @@ namespace BlockbusterApi.Controllers
                         Result = false,
                         Errors = new List<string>()
                         {
-                            "Carga Invalida1"
+                            "Carga Invalida 1"
                         }
                     });
                 }
@@ -123,6 +123,8 @@ namespace BlockbusterApi.Controllers
 
                 return Ok(new AuthResult()
                 {
+                    UserId = existing_user.Id,
+                    UserName = existing_user.UserName,
                     Result = true,
                     Token = jwtToken
                 });

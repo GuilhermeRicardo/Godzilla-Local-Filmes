@@ -7,16 +7,16 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class MovieTableService {  
-  movieTableUrl = 'https://localhost:7288/api/Movie';
+  movieTableUrl = 'https://localhost:7288/api/Movie/';
   
 constructor(private http: HttpClient) { }
 
 getAll(): Observable<movies[]> {
-  return this.http.get<movies[]>(`${this.movieTableUrl}/list`);
+  return this.http.get<movies[]>(`${this.movieTableUrl}list`);
 }
 
 getSearch(keyword: string): Observable<movies[]> {
-  return this.http.get<movies[]>(`${this.movieTableUrl}/search/${keyword}`);
+  return this.http.get<movies[]>(`${this.movieTableUrl}search/${keyword}`);
 }
 
 }

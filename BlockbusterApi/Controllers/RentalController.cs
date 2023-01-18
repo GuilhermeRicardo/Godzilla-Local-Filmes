@@ -3,6 +3,7 @@ using BlockbusterApi.Models;
 using BlockbusterApi.Models.DTOs;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics.Metrics;
@@ -22,8 +23,18 @@ namespace BlockbusterApi.Controllers
         public async Task<IActionResult> GetAsync(
             [FromServices] AppDataContext context)
         {
-            var rental = await context
-                .Rental
+            var rental = await (from re in context.Rental
+                                join us in context.Users on re.UserId equals us.Id
+                                join mo in context.Movies on re.MovieId equals mo.Id
+                                where re.UserId == us.Id
+                                select new
+                                {
+                                    Id = re.Id,
+                                    Movie = mo.titulo,
+                                    Email = us.Email,
+                                    UserName = us.UserName,
+                                    Date = re.RentDate
+                                }) 
                 .AsNoTracking()
                 .ToListAsync();
 
