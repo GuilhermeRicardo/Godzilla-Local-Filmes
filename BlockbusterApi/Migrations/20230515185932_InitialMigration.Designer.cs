@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlockbusterApi.Migrations
 {
     [DbContext(typeof(AppDataContext))]
-    [Migration("20230515144906_InitialMigration")]
+    [Migration("20230515185932_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -43,6 +43,26 @@ namespace BlockbusterApi.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Prestador");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Joao",
+                            Servico = "Reparos"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Roberto",
+                            Servico = "Limpeza"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Maria",
+                            Servico = "Elétrica"
+                        });
                 });
 
             modelBuilder.Entity("BlockbusterApi.Models.Servico", b =>

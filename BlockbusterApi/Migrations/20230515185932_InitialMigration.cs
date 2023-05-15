@@ -195,6 +195,21 @@ namespace BlockbusterApi.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+                table: "Prestador",
+                columns: new[] { "Id", "Name", "Servico" },
+                values: new object[] { 1, "Joao", "Reparos" });
+
+            migrationBuilder.InsertData(
+                table: "Prestador",
+                columns: new[] { "Id", "Name", "Servico" },
+                values: new object[] { 2, "Roberto", "Limpeza" });
+
+            migrationBuilder.InsertData(
+                table: "Prestador",
+                columns: new[] { "Id", "Name", "Servico" },
+                values: new object[] { 3, "Maria", "Elétrica" });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",

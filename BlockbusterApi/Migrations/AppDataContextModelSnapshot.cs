@@ -41,6 +41,26 @@ namespace BlockbusterApi.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Prestador");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Joao",
+                            Servico = "Reparos"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Roberto",
+                            Servico = "Limpeza"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Maria",
+                            Servico = "Elétrica"
+                        });
                 });
 
             modelBuilder.Entity("BlockbusterApi.Models.Servico", b =>
