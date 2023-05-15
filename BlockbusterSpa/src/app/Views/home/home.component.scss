@@ -26,18 +26,18 @@
     background-color: #212121;
     min-width: 280px;
     grid-row: 1 / -1;
-    
+    grid-column: 3 / 5 ;
 }
 
 
-.content {
-    grid-column: 2 /-1 ;
-    grid-row: 2 / 8;
-    padding: 30px;
-    padding-top: 0px;
-    justify-content: center;
-    align-items: center;
-}
+// .content {
+//     grid-column: 2 /-1 ;
+//     grid-row: 2 / 8;
+//     padding: 30px;
+//     padding-top: 0px;
+//     justify-content: center;
+//     align-items: center;
+// }
 
 .footer {
     display: flex;

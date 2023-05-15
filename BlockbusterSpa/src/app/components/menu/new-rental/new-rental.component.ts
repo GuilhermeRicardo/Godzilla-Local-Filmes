@@ -1,7 +1,7 @@
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { authResult } from './../../../Models/DTO/authResult';
-import { RentalDTO } from './../../../Models/DTO/rentalDTO';
-import { movies } from './../../../Models/movies';
+import { RentalDTO } from '../../../Models/DTO/rentalDTO';
+import { prestador } from '../../../Models/prestador';
 import { NewRentalService } from './new-rental.service';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -13,8 +13,8 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
   providers: [NewRentalComponent]
 })
 export class NewRentalComponent implements OnInit {
-  dataSource!: movies[]
-  value!: movies
+  dataSource!: prestador[]
+  value!: prestador
   movieAvailable!: boolean
   availability!: number
   holder!: string
@@ -28,7 +28,7 @@ export class NewRentalComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.NewRentalService.getMovies().subscribe((data:movies[]) =>{
+    this.NewRentalService.getPrestador().subscribe((data:prestador[]) =>{
       console.log(data);
       this.dataSource = data
     })
@@ -36,27 +36,27 @@ export class NewRentalComponent implements OnInit {
     throw new Error('Method not implemented.');
   }
 
-  checkMovieAvailability () {
+  // checkMovieAvailability () {
 
-    console.log(this.value.id);
+  //   console.log(this.value.id);
     
-    this.NewRentalService.getAvailability(this.value.id).subscribe(data => {
-      this.availability = data
-      if (this.availability == 0) {
-        console.log('nok');
-        this.holder = 'Filme indisponível em estoque.'
-        this.movieAvailable = false
-      }
+  //   this.NewRentalService.getAvailability(this.value.id).subscribe(data => {
+  //     this.availability = data
+  //     if (this.availability == 0) {
+  //       console.log('nok');
+  //       this.holder = 'Filme indisponível em estoque.'
+  //       this.movieAvailable = false
+  //     }
 
-      if (this.availability >= 1) {
-        console.log('ok');
-        this.holder = 'Há unidades '+ this.availability +' disponiveis em estoque!'
-        this.movieAvailable = true
-      }
+  //     if (this.availability >= 1) {
+  //       console.log('ok');
+  //       this.holder = 'Há unidades '+ this.availability +' disponiveis em estoque!'
+  //       this.movieAvailable = true
+  //     }
 
-      console.log(this.availability);
-    })
-  }
+  //     console.log(this.availability);
+  //   })
+  // }
 
   createNewRent () {
 
@@ -64,7 +64,7 @@ export class NewRentalComponent implements OnInit {
     
 
     let rent: RentalDTO = {
-      movieId: this.value.id,
+      prestadorId: this.value.id,
       userId: this.dummy.userId
     }
 

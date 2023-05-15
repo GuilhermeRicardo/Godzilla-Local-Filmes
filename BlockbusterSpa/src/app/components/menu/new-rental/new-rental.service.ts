@@ -1,31 +1,31 @@
 import { Token } from '@angular/compiler';
-import { RentalDTO } from './../../../Models/DTO/rentalDTO';
+import { RentalDTO } from '../../../Models/DTO/rentalDTO';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
-import { movies } from '../../../Models/movies';
+import { prestador } from '../../../Models/prestador';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class NewRentalService {
-  rentTableUrl = 'https://localhost:7288/api/rental/';
-  movieTableUrl = 'https://localhost:7288/api/Movie/';
+  rentTableUrl = 'https://localhost:7288/api/Servico/';
+  prestadorTableUrl = 'https://localhost:7288/api/prestador/';
   
   constructor(private http: HttpClient) { }
   
   postRent(element: RentalDTO, token: string): Observable<any> {
-    return this.http.post<any>(`${this.rentTableUrl}rent`,element)
+    return this.http.post<any>(`${this.rentTableUrl}servico`,element)
   }
   
-  getMovies(): Observable<movies[]> {
-    return this.http.get<movies[]>(`${this.movieTableUrl}list`);
+  getPrestador(): Observable<prestador[]> {
+    return this.http.get<prestador[]>(`${this.prestadorTableUrl}list`);
   }
 
-  getAvailability(id: any): Observable<any> {
-    return this.http.get<any>(`${this.movieTableUrl}availability/${id}`);
-  }
+  // getAvailability(id: any): Observable<any> {
+  //   return this.http.get<any>(`${this.movieTableUrl}availability/${id}`);
+  // }
 
 }
 
