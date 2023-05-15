@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './Views/home/home.component';
-import { MovieTableComponent } from './components/movie-table/movie-table.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -27,8 +26,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 @NgModule({
   declarations: [	
     AppComponent, 
-    HomeComponent, 
-    MovieTableComponent,
+    HomeComponent,
     MenuComponent,
     LoginComponent,
     RentTableComponent,

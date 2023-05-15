@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BlockbusterApi.Migrations
 {
-    public partial class Initial : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -49,18 +49,17 @@ namespace BlockbusterApi.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Movies",
+                name: "Prestador",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    titulo = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    diretor = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    estoque = table.Column<int>(type: "int", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Servico = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Movies", x => x.Id);
+                    table.PrimaryKey("PK_Prestador", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -170,43 +169,30 @@ namespace BlockbusterApi.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Rental",
+                name: "Servico",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    MovieId = table.Column<int>(type: "int", nullable: false),
+                    PrestadorId = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    RentDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    SolicitacaoDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Rental", x => x.Id);
+                    table.PrimaryKey("PK_Servico", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Rental_AspNetUsers_UserId",
+                        name: "FK_Servico_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Rental_Movies_MovieId",
-                        column: x => x.MovieId,
-                        principalTable: "Movies",
+                        name: "FK_Servico_Prestador_PrestadorId",
+                        column: x => x.PrestadorId,
+                        principalTable: "Prestador",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.InsertData(
-                table: "Movies",
-                columns: new[] { "Id", "diretor", "estoque", "titulo" },
-                values: new object[,]
-                {
-                    { 1, "Takao Okawara", 1, "Godzilla 2000" },
-                    { 2, "Motoyoshi Oda", 5, "Godzilla Contra Ataca" },
-                    { 3, "Gareth Edwards", 3, "Godzilla" },
-                    { 4, "Hideaki Anno", 4, "Godzilla Resurgence" },
-                    { 5, "Kōbun Shizuno", 2, "Godzilla: Planeta dos Monstros" },
-                    { 6, "Adam Wingard", 1, "Godzilla vs Kong" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -249,13 +235,13 @@ namespace BlockbusterApi.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Rental_MovieId",
-                table: "Rental",
-                column: "MovieId");
+                name: "IX_Servico_PrestadorId",
+                table: "Servico",
+                column: "PrestadorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Rental_UserId",
-                table: "Rental",
+                name: "IX_Servico_UserId",
+                table: "Servico",
                 column: "UserId");
         }
 
@@ -277,7 +263,7 @@ namespace BlockbusterApi.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Rental");
+                name: "Servico");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -286,7 +272,7 @@ namespace BlockbusterApi.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "Movies");
+                name: "Prestador");
         }
     }
 }

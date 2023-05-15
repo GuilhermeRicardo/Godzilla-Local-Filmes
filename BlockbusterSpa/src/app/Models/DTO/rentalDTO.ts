@@ -1,4 +1,4 @@
 export interface RentalDTO {
-    movieId: number,
+    prestadorId: number,
     userId: string
 }

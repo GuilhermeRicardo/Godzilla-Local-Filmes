@@ -1,4 +1,4 @@
-import { rentals } from './../../../Models/rental';
+import { servico } from '../../../Models/servico';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -7,12 +7,12 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class RentTableService {
-  rentTableUrl = 'https://localhost:7288/api/rental/';
+  rentTableUrl = 'https://localhost:7288/api/servico/';
   
   constructor(private http: HttpClient) { }
   
-  getAll(): Observable<rentals[]> {
-    return this.http.get<rentals[]>(`${this.rentTableUrl}list`);
+  getAll(): Observable<servico[]> {
+    return this.http.get<servico[]>(`${this.rentTableUrl}list`);
   }
   
   deleteRental(id: number): Observable<any> {

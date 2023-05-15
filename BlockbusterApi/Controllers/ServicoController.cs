@@ -14,7 +14,7 @@ namespace BlockbusterApi.Controllers
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [ApiController]
     [Route("api/[controller]")]
-    public class RentalController : ControllerBase
+    public class ServicoController : ControllerBase
     {
         // GET
 
@@ -23,17 +23,18 @@ namespace BlockbusterApi.Controllers
         public async Task<IActionResult> GetAsync(
             [FromServices] AppDataContext context)
         {
-            var rental = await (from re in context.Rental
-                                join us in context.Users on re.UserId equals us.Id
-                                join mo in context.Movies on re.MovieId equals mo.Id
-                                where re.UserId == us.Id
+            var rental = await (from sr in context.Servico
+                                join us in context.Users on sr.UserId equals us.Id
+                                join pr in context.Prestador on sr.PrestadorId equals pr.Id
+                                where sr.UserId == us.Id
                                 select new
                                 {
-                                    Id = re.Id,
-                                    Movie = mo.titulo,
+                                    Id = sr.Id,
+                                    Prestador = pr.Name,
+                                    Servico = pr.Servico,
                                     Email = us.Email,
                                     UserName = us.UserName,
-                                    Date = re.RentDate
+                                    Date = sr.SolicitacaoDate
                                 }) 
                 .AsNoTracking()
                 .ToListAsync();
@@ -46,7 +47,7 @@ namespace BlockbusterApi.Controllers
         // POST
 
         [HttpPost]
-        [Route("rent")]
+        [Route("servico")]
         public async Task<IActionResult> PostAsync(
             [FromServices] AppDataContext context,
             [FromBody] RentInformationDTO Model)
@@ -60,34 +61,34 @@ namespace BlockbusterApi.Controllers
                     }
                 });
 
-            var rent = new Rental
+            var rent = new Servico
             {
-                MovieId = Model.MovieId,
+                PrestadorId = Model.PrestadorId,
                 UserId = Model.UserId,
             };
 
 
-            var availability = await context
-                .Movies
-                .Where(x => x.Id == rent.MovieId)
-                .FirstOrDefaultAsync();
+            //var availability = await context
+            //    .Prestador
+            //    .Where(x => x.Id == rent.PrestadorId)
+            //    .FirstOrDefaultAsync();
 
 
-            var count = await context
-                .Rental
-                .Where(x => x.MovieId == rent.MovieId)
-                .CountAsync();
+            //var count = await context
+            //    .Servico
+            //    .Where(x => x.PrestadorId == rent.PrestadorId)
+            //    .CountAsync();
 
 
-            if (count >= availability.estoque)
-            {
-                return Forbid();
+            //if (count >= availability.estoque)
+            //{
+            //    return Forbid();
 
-            }
+            //}
 
             try
             {
-                await context.Rental.AddAsync(rent);
+                await context.Servico.AddAsync(rent);
                 await context.SaveChangesAsync();
                 return Created("[controller]/rent", rent);
 
@@ -111,13 +112,13 @@ namespace BlockbusterApi.Controllers
             [FromRoute] int id)
         {
             var rent = await context
-                .Rental
+                .Servico
                 .Where(x => x.Id == id)
                 .FirstOrDefaultAsync();
 
             try
             {
-                context.Rental.Remove(rent);
+                context.Servico.Remove(rent);
                 await context.SaveChangesAsync();
                 return Ok();
             }

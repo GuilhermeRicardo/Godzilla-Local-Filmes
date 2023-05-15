@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlockbusterApi.Migrations
 {
     [DbContext(typeof(AppDataContext))]
-    [Migration("20230118115120_Initial")]
-    partial class Initial
+    [Migration("20230515144906_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,7 +24,7 @@ namespace BlockbusterApi.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("BlockbusterApi.Models.Movie", b =>
+            modelBuilder.Entity("BlockbusterApi.Models.Prestador", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -32,67 +32,20 @@ namespace BlockbusterApi.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("diretor")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("estoque")
-                        .HasColumnType("int");
-
-                    b.Property<string>("titulo")
+                    b.Property<string>("Servico")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Movies");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            diretor = "Takao Okawara",
-                            estoque = 1,
-                            titulo = "Godzilla 2000"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            diretor = "Motoyoshi Oda",
-                            estoque = 5,
-                            titulo = "Godzilla Contra Ataca"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            diretor = "Gareth Edwards",
-                            estoque = 3,
-                            titulo = "Godzilla"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            diretor = "Hideaki Anno",
-                            estoque = 4,
-                            titulo = "Godzilla Resurgence"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            diretor = "Kōbun Shizuno",
-                            estoque = 2,
-                            titulo = "Godzilla: Planeta dos Monstros"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            diretor = "Adam Wingard",
-                            estoque = 1,
-                            titulo = "Godzilla vs Kong"
-                        });
+                    b.ToTable("Prestador");
                 });
 
-            modelBuilder.Entity("BlockbusterApi.Models.Rental", b =>
+            modelBuilder.Entity("BlockbusterApi.Models.Servico", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -100,10 +53,10 @@ namespace BlockbusterApi.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("MovieId")
+                    b.Property<int>("PrestadorId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("RentDate")
+                    b.Property<DateTime>("SolicitacaoDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("UserId")
@@ -112,11 +65,11 @@ namespace BlockbusterApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("MovieId");
+                    b.HasIndex("PrestadorId");
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Rental");
+                    b.ToTable("Servico");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -321,11 +274,11 @@ namespace BlockbusterApi.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("BlockbusterApi.Models.Rental", b =>
+            modelBuilder.Entity("BlockbusterApi.Models.Servico", b =>
                 {
-                    b.HasOne("BlockbusterApi.Models.Movie", "Movie")
+                    b.HasOne("BlockbusterApi.Models.Prestador", "Prestador")
                         .WithMany()
-                        .HasForeignKey("MovieId")
+                        .HasForeignKey("PrestadorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -335,7 +288,7 @@ namespace BlockbusterApi.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Movie");
+                    b.Navigation("Prestador");
 
                     b.Navigation("User");
                 });

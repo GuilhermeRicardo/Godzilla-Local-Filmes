@@ -1,4 +1,4 @@
-import { rentals } from './../../../Models/rental';
+import { servico } from '../../../Models/servico';
 import { Component, Inject, OnInit } from '@angular/core';
 import { RentTableService } from './rent-table.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -14,8 +14,8 @@ import { authResult } from '../../../Models/DTO/authResult';
 })
 export class RentTableComponent implements OnInit {
   value!: string
-  displayedColumns: string[] = ['movie', 'email', 'userName','date','devolucao'];
-  dataSource!: rentals[]; 
+  displayedColumns: string[] = ['prestador', 'servico', 'email', 'userName','date','devolucao'];
+  dataSource!: servico[]; 
 
   constructor (
     @Inject (MAT_DIALOG_DATA)
@@ -25,7 +25,7 @@ export class RentTableComponent implements OnInit {
 
   ) {
 
-      this.rentTableService.getAll().subscribe((data:rentals[]) =>{
+      this.rentTableService.getAll().subscribe((data:servico[]) =>{
         console.log(data);
         this.dataSource = data
       })
